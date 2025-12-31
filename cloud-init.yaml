@@ -1,0 +1,40 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+packages:
+  - apache2
+
+runcmd:
+  - systemctl enable apache2
+  - systemctl start apache2
+  - |
+    cat << 'EOF' > /var/www/html/index.html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome</title>
+        <style>
+            body {
+                margin: 0;
+                padding-top: 30px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                color: black;
+            }
+            h1 {
+                display: inline-block;
+                padding: 20px;
+                background-color: blue;
+                color: white;
+                font-size: 36px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to your fresh web server Soumare</h1>
+    </body>
+    </html>
+    EOF
