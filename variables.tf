@@ -1,15 +1,25 @@
 variable "location" {
-  description = "Azure region"
-  type        = string
-  default     = "eastus"
+  default = "westeurope"
 }
 
 variable "resource_group_name" {
-  description = "Resource group name"
-  type        = string
+  default = "rg-terraform-demo"
+}
+
+variable "storage_account_name" {
+  default = "tfstoragedemo1234" # Should be UNIQUE in Azure
 }
 
 variable "vm_name" {
-  description = "Virtual machine name"
-  type        = string
+  default = "vm-ubuntu-demo"
 }
+
+variable "admin_username" {
+  default = "azureuser"
+}
+
+variable "admin_password" {
+  description = "Mot de passe admin VM"
+  sensitive   = true
+}
+
